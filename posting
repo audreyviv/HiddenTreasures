@@ -71,6 +71,7 @@
         }
         div{
             padding-top: 10px;
+
             padding-bottom: 10px;
         }
         div1{
@@ -81,6 +82,11 @@
             padding-top: 50px;
             padding-left: 30px;
         }
+=======
+            /*padding-bottom: 10px;*/
+        }
+       
+
         :root {
             --username: JohnDoe22;
         }
@@ -100,18 +106,27 @@
             height: auto;
         }
         
+
         #display_image{
+
+        #IDisplay{
+
         width: 300px;
         height: 195px;
         background-position: center;
         background-size: cover;
         padding-bottom: 10px;
         }
+
+
+
+
         label {
             color: black;
             font-size: 15px;
             font-family: Georgia, serif;
             padding-top: 10px;
+
         }  
         .center[type="text"],.center input[type="comment"]{
         border: 0; 
@@ -139,6 +154,42 @@ outline: none;
 border-radius: 30px;
 }
 
+
+        } 
+        .column {
+            float: left;
+            width: 50%;
+            padding: 15px;
+        }
+
+        
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+        .center h1 {
+            
+            text-align: center;
+            padding: 20px;
+            
+        }
+        .center{
+          text-align: center;
+          width: 200px; 
+          border: 4px;
+          border-color: black;
+          padding: 10px 10px;
+        }
+        textarea{
+          text-align: center;
+          height: 50px;
+          width: 99%;
+          border-color: rgb(10, 94, 10);
+
+        }
+    
+
 </style>
 </head>
 
@@ -148,6 +199,7 @@ border-radius: 30px;
     </div>
     <ul>
     <li><a href="homePage.html">Home</a></li>
+
     <li style="float:right"><a class="active" href="#profile">Profile</a></li>
     <li style="float:right"><a class="active" href="posting.html">Post</a></li>
     <li style="float:right"><a class="active" href="#filter">Filter</a></li>
@@ -207,4 +259,101 @@ border-radius: 30px;
    }
     </script>
 </body>
+
+    <li style="float:right"><a class="active" href="userProfile.html">Profile</a></li>
+    <li style="float:right"><a class="active" href="posting.html">Post</a></li>
+    <li style="float:right"><a class="active" href="#filter">Filter</a></li>
+    </ul>
+    
+    <div class="parent">
+        <h2>Create New Post</h2>
+    </div>
+    
+    <form action="posts.php" method = "post">
+        <div class="column">
+            <label for="image">Image:</label>
+            <input type="file" id="image" accept="image/jpeg, image/png, image/jpg">
+            <div id="IDisplay"></div>
+            <label for="caption">Caption:</label>
+            <input type="text" id="caption" name="caption"><br><br>
+            <label for="sname">Store Name:</label>
+            <input type="text" id="sname" name="sname"><br><br>
+            <label for="address">Store Address:</label>
+            <input type="text" id="address" name="address"><br><br>
+        </div>
+        <p>Store Rating out of 5:</p>
+        <div class="parent">
+            <input type="radio" id="one" name="rating" value="one">
+            <label for="one">1</label><br>
+            <input type="radio" id="two" name="rating" value="two">
+            <label for="two">2</label><br>
+            <input type="radio" id="three" name="rating" value="three">
+            <label for="three">3</label><br>
+            <input type="radio" id="four" name="rating" value="four">
+            <label for="four">4</label><br>
+            <input type="radio" id="five" name="rating" value="five">
+            <label for="five">5</label><br>
+        </div>
+        <p></p>
+
+        <p>Tell us about your item (select all categories that apply)</p>
+        <input type="checkbox" id="cottagecore" name="category" value="cottagecore">
+        <label for="cottagecore">Cottagecore</label><br>
+        <input type="checkbox" id="y2k" name="category" value="y2k">
+        <label for="cottagecore">Y2K</label><br>
+        <input type="checkbox" id="academia" name="category" value="academia">
+        <label for="cottagecore">Academia</label><br>
+        <input type="checkbox" id="goth" name="category" value="goth">
+        <label for="cottagecore">Goth</label><br>
+
+        <p></p>
+        <input type="submit" value="Submit">
+    </form>
+
+    <script>
+        <!-- The image being uploaded by the user is converted into a format that is displayable.
+                It is stored in the imageUpload variable and initializes the styple for CSS use. -->
+        <!-- Returns first elm in doc matching selector wanted-->
+        const image = document.querySelector("#image");
+        <!--event listener waits for the event to occur-->
+        image.addEventListener("change", function() {
+        <!--reads file-->
+        const file_reader = new FileReader();
+        <!--waits to load file in-->
+        file_reader.addEventListener("load", () => {
+            <!--event listener waits for the event to occur-->
+            const imageUpload = file_reader.result;
+            <!--Returns value from the file reader that has already been triggered by an event-->
+            document.querySelector("#IDisplay").style.backgroundImage = `url(${imageUpload})`;
+        });
+        <!-Reads file for upload through file object at the first position in array-->
+        file_reader.readAsDataURL(this.files[0]);
+        });
+    </script>
+
+</body><div class="center">
+         
+            <form method = "post">
+                
+                <br>
+                
+                <br>
+                <textarea placeholder="comments"></textarea>
+                <div class = "btn">
+                  <input type="submit" value='Comment' id = "submit">
+                  <h3 id ="submit" onclick="myFunction()"></h3>
+                </div>
+                
+        </form>
+        <script>
+         
+      var comments = document.getElementById("submit");
+      var btn = document.querySelector(".btn");
+      var text = document.querySelector("textarea"); 
+
+      function myFunction(){
+        btn.style.display = "block"; 
+
+      }
+
 </html>
